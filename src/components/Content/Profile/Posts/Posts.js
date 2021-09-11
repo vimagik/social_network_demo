@@ -1,15 +1,19 @@
 import Post from "./Post/Post";
+import style from "./Posts.module.css";
 
-function Posts() {
+function Posts(props) {
+
+    let postRender = props.data.map(post => <Post key={post.id} message={post.message} likecounts={post.likeCounts}/>)
+
     return (
-        <div>Мои посты
+        <div className={style.postBody}>Мои посты
             <div>Новый пост</div>
             <textarea cols="30" rows="10"/>
-            <button>Отправить</button>
+            <div className={style.postButton}>
+                <button>Отправить</button>
+            </div>
             <div>
-                <Post message='Привет, как у вас дела?' likecounts='12' />
-                <Post message='Как я сюда попал?' likecounts='11' />
-                <Post message='Кто здесь?' likecounts='99' />
+                {postRender}
             </div>
         </div>
     );

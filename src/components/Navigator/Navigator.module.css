@@ -4,12 +4,16 @@
     padding: 10px;
 }
 
-a {
-    color: azure;
+.nav a {
+    color: white;
     padding-bottom: 10px;
     text-decoration: none;
 }
 
 .active {
-    color: gold;
+    color: gold !important;
+}
+
+.nav a:hover {
+    color: cyan;
 }

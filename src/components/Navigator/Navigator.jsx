@@ -1,4 +1,4 @@
-import style from './Navigator.module.css'
+import style from './Navigator.module.css';
 import {NavLink} from "react-router-dom";
 
 function Navigator() {

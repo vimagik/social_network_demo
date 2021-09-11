@@ -1,12 +1,12 @@
 import style from './Content.module.css'
 import Posts from "./Posts/Posts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-function Content() {
+function Content(props) {
     return (
         <div className={style.content}>
-            <img src="https://www.wpexplorer.com/wp-content/uploads/wordpress-image-optimization-guide.jpg" alt="Баннер"/>
-            <div>Аватар + описание</div>
-            <Posts />
+            <ProfileInfo/>
+            <Posts data={props.data.postData}/>
         </div>
     );
 }
