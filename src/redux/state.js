@@ -1,5 +1,5 @@
-const UPDATE_TEXT_AREA = 'UPDATE-TEXT-AREA';
-const ADD_POST = 'ADD-POST';
+import ProfilePageReducer from "./ProfilePageReducer";
+import DialogPageReducer from "./DialogPageReducer";
 
 let store = {
     _state: {
@@ -13,12 +13,13 @@ let store = {
                 {id: '6', name: 'Иван'}
             ],
             messageData: [
-                {id: '0', message: 'Привет!'},
-                {id: '1', message: 'Как дела?'},
-                {id: '2', message: 'Отлично!'},
-                {id: '3', message: 'Эгегей!'},
-                {id: '4', message: 'Yo!'},
-            ]
+                {id: 0, message: 'Привет!'},
+                {id: 1, message: 'Как дела?'},
+                {id: 2, message: 'Отлично!'},
+                {id: 3, message: 'Эгегей!'},
+                {id: 4, message: 'Yo!'},
+            ],
+            textMessageValue: ''
         },
         profilePage: {
             postData: [
@@ -35,37 +36,14 @@ let store = {
     subscribe(observer) {
         this._updateTree = observer;
     },
-    getState(){
+    getState() {
         return this._state;
     },
-    dispatch(action){
-        if (action.type === ADD_POST){
-            let newPost = {
-            id: this._state.profilePage.postData.length + 1,
-            message: this._state.profilePage.currentTextValue,
-            likeCounts: 0
-        }
-            this._state.profilePage.postData.push(newPost);
-            this._state.profilePage.currentTextValue = '';
-            this._updateTree();
-        } else if (action.type === UPDATE_TEXT_AREA){
-            this._state.profilePage.currentTextValue = action.currentText;
-            this._updateTree();
-        }
-    },
-}
-
-export const actionUpdateText = (text) => {
-    return ({
-        type: UPDATE_TEXT_AREA,
-        currentText: text
-    });
-}
-
-export const actionAddPost = () => {
-    return ({
-        type: ADD_POST
-    });
+    dispatch(action) {
+        ProfilePageReducer(this.getState().profilePage, action);
+        DialogPageReducer(this.getState().dialogsPage, action);
+        this._updateTree();
+ }
 }
 
 export default store;

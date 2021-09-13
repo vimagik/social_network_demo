@@ -17,7 +17,10 @@ function App(props) {
                 <Route exact path="/">
                     <Redirect to="/dialogs"/>
                 </Route>
-                <Route path="/dialogs" render={() => <Dialogs data={props.state.dialogsPage}/>}/>
+                <Route path="/dialogs" render={() => <Dialogs
+                    data={props.state.dialogsPage}
+                    dispatch={props.dispatch}
+                />}/>
                 <Route path="/profile" render={() => <Content
                     data={props.state.profilePage}
                     dispatch={props.dispatch}

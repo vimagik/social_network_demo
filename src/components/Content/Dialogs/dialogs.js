@@ -15,7 +15,7 @@ function Dialogs(props) {
             </div>
             <div className={st.Messages}>
                 {messages}
-                <CreateMessage/>
+                <CreateMessage newTextValue={props.data.textMessageValue} dispatch={props.dispatch}/>
             </div>
         </div>
     );

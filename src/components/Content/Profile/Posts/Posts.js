@@ -1,7 +1,7 @@
 import Post from "./Post/Post";
 import style from "./Posts.module.css";
 import React from "react";
-import {actionAddPost, actionUpdateText} from "../../../../redux/state";
+import {actionAddPost, actionUpdateText} from "../../../../redux/ProfilePageReducer";
 
 
 
