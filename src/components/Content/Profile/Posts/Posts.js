@@ -1,6 +1,9 @@
 import Post from "./Post/Post";
 import style from "./Posts.module.css";
 import React from "react";
+import {actionAddPost, actionUpdateText} from "../../../../redux/state";
+
+
 
 function Posts(props) {
 
@@ -10,7 +13,11 @@ function Posts(props) {
 
     let UpdateText = () => {
         let textValue = textAreaObj.current.value;
-        props.updateTextArea(textValue);
+        props.dispatch(actionUpdateText(textValue))
+    }
+
+    let onClickButtonAction = () => {
+        props.dispatch(actionAddPost());
     }
 
     return (
@@ -18,7 +25,7 @@ function Posts(props) {
             <div>Новый пост</div>
             <textarea cols="30" rows="10" ref={textAreaObj} onChange={UpdateText} value={props.textValue}/>
             <div className={style.postButton}>
-                <button onClick={props.addPost}>Отправить</button>
+                <button onClick={onClickButtonAction}>Отправить</button>
             </div>
             <div>
                 {postRender}
