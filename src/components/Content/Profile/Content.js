@@ -6,7 +6,7 @@ function Content(props) {
     return (
         <div className={style.content}>
             <ProfileInfo/>
-            <Posts data={props.data.postData}/>
+            <Posts data={props.data.postData} addPost={props.addPost} textValue={props.data.currentTextValue} updateTextArea={props.updateTextArea}/>
         </div>
     );
 }

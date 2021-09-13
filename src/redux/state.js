@@ -18,12 +18,35 @@ let state = {
     },
     profilePage: {
         postData: [
-            {id: 0, message: 'Привет как дела?', likeCounts: '12'},
-            {id: 1, message: 'Как я сюда полпа?', likeCounts: '11'},
-            {id: 2, message: 'Кто здесь?', likeCounts: '8'},
-            {id: 3, message: 'У меня все получится!', likeCounts: '99'},
-        ]
+            {id: 0, message: 'Привет как дела?', likeCounts: 12},
+            {id: 1, message: 'Как я сюда полпа?', likeCounts: 11},
+            {id: 2, message: 'Кто здесь?', likeCounts: 9},
+            {id: 3, message: 'У меня все получится!', likeCounts: 99},
+        ],
+        currentTextValue: ''
     }
+}
+
+let updateTree;
+
+export const AddPost = () => {
+    let newPost = {
+        id: state.profilePage.postData.length + 1,
+        message: state.profilePage.currentTextValue,
+        likeCounts: 0
+    }
+    state.profilePage.postData.push(newPost);
+    state.profilePage.currentTextValue = '';
+    updateTree();
+}
+
+export const UpdateTextArea = (currentText) => {
+    state.profilePage.currentTextValue = currentText;
+    updateTree();
+}
+
+export const subscribe = (observer) => {
+    updateTree = observer;
 }
 
 export default state;
