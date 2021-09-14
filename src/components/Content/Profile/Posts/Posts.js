@@ -1,9 +1,6 @@
 import Post from "./Post/Post";
 import style from "./Posts.module.css";
 import React from "react";
-import {actionAddPost, actionUpdateText} from "../../../../redux/ProfilePageReducer";
-
-
 
 function Posts(props) {
 
@@ -13,11 +10,11 @@ function Posts(props) {
 
     let UpdateText = () => {
         let textValue = textAreaObj.current.value;
-        props.dispatch(actionUpdateText(textValue))
+        props.onUpdateText(textValue);
     }
 
-    let onClickButtonAction = () => {
-        props.dispatch(actionAddPost());
+    let ClickButtonAction = () => {
+        props.onClickButtonAction();
     }
 
     return (
@@ -25,7 +22,7 @@ function Posts(props) {
             <div>Новый пост</div>
             <textarea cols="30" rows="10" ref={textAreaObj} onChange={UpdateText} value={props.textValue}/>
             <div className={style.postButton}>
-                <button onClick={onClickButtonAction}>Отправить</button>
+                <button onClick={ClickButtonAction}>Отправить</button>
             </div>
             <div>
                 {postRender}

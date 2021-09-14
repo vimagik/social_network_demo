@@ -5,8 +5,8 @@ import CreateMessage from "./CreateMessage/CreateMessage";
 
 function Dialogs(props) {
 
-    let dialogs = props.data.dialogItemData.map(item => <DialogItem key={item.id} id={item.id} name={item.name}/>);
-    let messages = props.data.messageData.map(item => <MessageValue key={item.id} message={item.message}/>);
+    let dialogs = props.dialogItemData.map(item => <DialogItem key={item.id} id={item.id} name={item.name}/>);
+    let messages = props.messageData.map(item => <MessageValue key={item.id} message={item.message}/>);
 
     return (
         <div className={st.Dialogs}>
@@ -15,7 +15,11 @@ function Dialogs(props) {
             </div>
             <div className={st.Messages}>
                 {messages}
-                <CreateMessage newTextValue={props.data.textMessageValue} dispatch={props.dispatch}/>
+                <CreateMessage
+                    newTextValue={props.textMessageValue}
+                    addMessage={props.onAddMessage}
+                    updateValueAddMessage={props.onupdateValueAddMessage}
+                />
             </div>
         </div>
     );

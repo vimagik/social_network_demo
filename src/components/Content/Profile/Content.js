@@ -1,12 +1,12 @@
 import style from './Content.module.css'
-import Posts from "./Posts/Posts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import PostsContainer from "./Posts/PostsContainer";
 
 function Content(props) {
     return (
         <div className={style.content}>
             <ProfileInfo/>
-            <Posts data={props.data.postData} dispatch={props.dispatch} textValue={props.data.currentTextValue}/>
+            <PostsContainer store={props.store} />
         </div>
     );
 }

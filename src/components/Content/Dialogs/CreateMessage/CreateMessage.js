@@ -1,23 +1,22 @@
 import st from './CreateMessages.module.css'
 import React from "react";
-import {actionAddMessage, actionUpdateMessageText} from "../../../../redux/DialogPageReducer";
 
 function CreateMessage(props) {
 
     let textBlock = React.createRef();
 
     let AddMessage = () => {
-        props.dispatch(actionAddMessage());
+        props.addMessage();
     }
 
     let updateValueAddMessage = (el) => {
         let text = el.target.value;
-        props.dispatch(actionUpdateMessageText(text));
+        props.updateValueAddMessage(text);
     }
 
     let CtrlEnter = (ev) => {
         if (ev.ctrlKey && ev.code==='Enter'){
-            AddMessage()
+            props.addMessage();
         }
     }
 
