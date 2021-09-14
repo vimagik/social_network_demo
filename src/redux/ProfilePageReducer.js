@@ -1,7 +1,17 @@
 const UPDATE_TEXT_AREA = 'UPDATE-TEXT-AREA';
 const ADD_POST = 'ADD-POST';
 
-const ProfilePageReducer = (state, action) => {
+let initialState = {
+    postData: [
+        {id: 0, message: 'Привет как дела?', likeCounts: 12},
+        {id: 1, message: 'Как я сюда полпа?', likeCounts: 11},
+        {id: 2, message: 'Кто здесь?', likeCounts: 9},
+        {id: 3, message: 'У меня все получится!', likeCounts: 99},
+    ],
+    currentTextValue: ''
+}
+
+const ProfilePageReducer = (state = initialState, action) => {
     switch (action) {
         case ADD_POST:
             let newPost = {
