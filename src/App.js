@@ -17,8 +17,8 @@ function App(props) {
                 <Route exact path="/">
                     <Redirect to="/dialogs"/>
                 </Route>
-                <Route path="/dialogs" render={() => <DialogsContainer store={props.store}/>}/>
-                <Route path="/profile" render={() => <Content store={props.store}/>}/>
+                <Route path="/dialogs" render={() => <DialogsContainer />}/>
+                <Route path="/profile" render={() => <Content />}/>
                 <Route path="/news" component={News}/>
                 <Route path="/music" component={Music}/>
                 <Route path="/settings" component={Settings}/>

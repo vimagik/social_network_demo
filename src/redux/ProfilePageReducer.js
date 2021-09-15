@@ -5,8 +5,6 @@ let initialState = {
     postData: [
         {id: 0, message: 'Привет как дела?', likeCounts: 12},
         {id: 1, message: 'Как я сюда полпа?', likeCounts: 11},
-        {id: 2, message: 'Кто здесь?', likeCounts: 9},
-        {id: 3, message: 'У меня все получится!', likeCounts: 99},
     ],
     currentTextValue: ''
 }
@@ -19,12 +17,15 @@ const ProfilePageReducer = (state = initialState, action) => {
                 message: state.currentTextValue,
                 likeCounts: 0
             }
-            state.postData.push(newPost);
-            state.currentTextValue = '';
-            return state;
+            let addState = {...state};
+            addState.postData = [...state.postData];
+            addState.postData.push(newPost);
+            addState.currentTextValue = '';
+            return addState;
         case UPDATE_TEXT_AREA:
-            state.currentTextValue = action.currentText;
-            return state;
+            let updateState = {...state};
+            updateState.currentTextValue = action.currentText;
+            return updateState;
         default:
             return state;
     }

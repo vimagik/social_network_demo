@@ -1,26 +1,25 @@
 import {actionAddPost, actionUpdateText} from "../../../../redux/ProfilePageReducer";
 import Posts from "./Posts";
+import {connect} from "react-redux";
 
-function PostsContainer(props) {
-
-    const state = props.store.getState();
-
-    let onUpdateText = (textValue) => {
-        props.store.dispatch(actionUpdateText(textValue));
-    }
-
-    let onClickButtonAction = () => {
-        props.store.dispatch(actionAddPost());
-    }
-
-    return (
-        <Posts
-            data={state.profilePage.postData}
-            textValue={state.profilePage.currentTextValue}
-            onUpdateText={onUpdateText}
-            onClickButtonAction={onClickButtonAction}
-        />
-    );
+let mapStateToProps = (state) => {
+    return ({
+        data: state.profilePage.postData,
+        textValue: state.profilePage.currentTextValue
+    });
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return ({
+        onUpdateText: (textValue) => {
+            dispatch(actionUpdateText(textValue))
+        },
+        onClickButtonAction: () => {
+            dispatch(actionAddPost())
+        }
+    });
+}
+
+let PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts)
 
 export default PostsContainer;

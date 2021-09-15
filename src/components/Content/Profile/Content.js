@@ -6,7 +6,7 @@ function Content(props) {
     return (
         <div className={style.content}>
             <ProfileInfo/>
-            <PostsContainer store={props.store} />
+            <PostsContainer/>
         </div>
     );
 }
