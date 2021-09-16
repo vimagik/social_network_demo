@@ -1,5 +1,6 @@
 import st from './CreateMessages.module.css'
 import React from "react";
+import {Button} from "@material-ui/core";
 
 function CreateMessage(props) {
 
@@ -15,16 +16,19 @@ function CreateMessage(props) {
     }
 
     let CtrlEnter = (ev) => {
-        if (ev.ctrlKey && ev.code==='Enter'){
+        if (ev.ctrlKey && ev.code === 'Enter') {
             props.addMessage();
         }
     }
 
     return (
         <div className={st.AddMessageBlock}>
-            <textarea ref={textBlock} cols="30" rows="10" onChange={updateValueAddMessage} value={props.newTextValue} onKeyPress={CtrlEnter}/>
+            <textarea ref={textBlock} cols="30" rows="10" onChange={updateValueAddMessage} value={props.newTextValue}
+                      onKeyPress={CtrlEnter}/>
             <div>
-                <button onClick={AddMessage}>Добавить сообщение</button>
+                <Button variant="contained" color="secondary" onClick={AddMessage}>
+                    Добавить сообщение
+                </Button>
             </div>
         </div>
     );

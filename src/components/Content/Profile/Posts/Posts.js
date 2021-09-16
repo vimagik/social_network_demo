@@ -1,6 +1,7 @@
 import Post from "./Post/Post";
 import style from "./Posts.module.css";
 import React from "react";
+import {Button} from "@material-ui/core";
 
 function Posts(props) {
 
@@ -22,7 +23,9 @@ function Posts(props) {
             <div>Новый пост</div>
             <textarea cols="30" rows="10" ref={textAreaObj} onChange={UpdateText} value={props.textValue}/>
             <div className={style.postButton}>
-                <button onClick={ClickButtonAction}>Отправить</button>
+                <Button variant="contained" color="secondary" onClick={ClickButtonAction}>
+                    Отправить
+                </Button>
             </div>
             <div>
                 {postRender}

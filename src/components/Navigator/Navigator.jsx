@@ -1,24 +1,36 @@
 import style from './Navigator.module.css';
 import {NavLink} from "react-router-dom";
+import {MenuItem, MenuList} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    main: {
+        color: "white",
+    }
+}));
 
 function Navigator() {
+    const classes = useStyles();
+
     return (
         <nav className={style.nav}>
-            <div>
-                <NavLink to="/profile" activeClassName={style.active}>Профиль</NavLink>
-            </div>
-            <div>
-                <NavLink to="/dialogs" activeClassName={style.active}>Сообщения</NavLink>
-            </div>
-            <div>
-                <NavLink to="/news" activeClassName={style.active}>Новости</NavLink>
-            </div>
-            <div>
-                <NavLink to="/music" activeClassName={style.active}>Музыка</NavLink>
-            </div>
-            <div>
-                <NavLink to="/settings" activeClassName={style.active}>Настройки</NavLink>
-            </div>
+            <MenuList className={classes.main}>
+                <NavLink to="/profile" activeClassName={style.active}>
+                    <MenuItem>Профиль</MenuItem>
+                </NavLink>
+                <NavLink to="/dialogs" activeClassName={style.active}>
+                    <MenuItem>Сообщения</MenuItem>
+                </NavLink>
+                <NavLink to="/news" activeClassName={style.active}>
+                    <MenuItem>Новости</MenuItem>
+                </NavLink>
+                <NavLink to="/music" activeClassName={style.active}>
+                    <MenuItem>Музыка</MenuItem>
+                </NavLink>
+                <NavLink to="/settings" activeClassName={style.active}>
+                    <MenuItem>Настройки</MenuItem>
+                </NavLink>
+            </MenuList>
         </nav>
     );
 }
