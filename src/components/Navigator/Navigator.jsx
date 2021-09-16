@@ -30,6 +30,9 @@ function Navigator() {
                 <NavLink to="/settings" activeClassName={style.active}>
                     <MenuItem>Настройки</MenuItem>
                 </NavLink>
+                <NavLink to="/users" activeClassName={style.active}>
+                    <MenuItem>Пользователи</MenuItem>
+                </NavLink>
             </MenuList>
         </nav>
     );

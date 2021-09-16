@@ -9,6 +9,7 @@ import Settings from "./components/Content/Settings/Settings";
 import DialogsContainer from "./components/Content/Dialogs/dialogsContainer";
 import {createTheme, MuiThemeProvider} from "@material-ui/core";
 import {indigo, red} from "@material-ui/core/colors";
+import Users from './components/Content/Users/Users';
 
 const theme = createTheme({
     palette: {
@@ -32,6 +33,7 @@ function App(props) {
                     <Route path="/news" component={News}/>
                     <Route path="/music" component={Music}/>
                     <Route path="/settings" component={Settings}/>
+                    <Route path="/users" render={() => <Users/>}/>
                 </div>
             </MuiThemeProvider>
         </BrowserRouter>
