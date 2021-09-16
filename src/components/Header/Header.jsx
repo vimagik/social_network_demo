@@ -1,6 +1,6 @@
 import style from './Header.module.css'
 import React from 'react';
-import {alpha, makeStyles, MuiThemeProvider} from '@material-ui/core/styles';
+import {alpha, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,16 +15,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {createTheme} from "@material-ui/core";
-import {indigo, pink} from "@material-ui/core/colors";
-
-const theme = createTheme({
-  palette: {
-    primary: indigo,
-    secondary: pink,
-  },
-});
-
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -175,9 +165,9 @@ export default function Header() {
   );
 
   return (
+
     <div className={classes.grow + " " + style.header}>
-      <MuiThemeProvider theme={theme}>
-      <AppBar position="static" theme={theme}>
+      <AppBar position="static">
         <Toolbar>
           <IconButton
             edge="start"
@@ -239,21 +229,11 @@ export default function Header() {
           </div>
         </Toolbar>
       </AppBar>
-      </MuiThemeProvider>
+
       {renderMobileMenu}
       {renderMenu}
     </div>
+
   );
 }
 
-
-
-function Header2() {
-    return (
-        <header className={style.header}>
-            <img src="https://img2.freepng.ru/20180509/gvw/kisspng-globe-earth-clip-art-5af366a46f1587.271956161525900964455.jpg" alt="Лого"/>
-        </header>
-    );
-}
-
-//export default Header;
